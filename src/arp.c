@@ -100,10 +100,29 @@ void arp_resp(uint8_t *target_ip, uint8_t *target_mac)
     ethernet_out(&txbuf, apt->target_mac, NET_PROTOCOL_ARP);
 }
 
-int ishostip(uint8_t *ip) {
+int is_hostip(uint8_t *ip) {
     for(int i=0; i<NET_IP_LEN; i++) {
         if(ip[i] != net_if_ip[i]) return 0;
     }
+    return 1;
+}
+
+int is_valid(arp_pkt_t *apt) {
+    /*
+    static const arp_pkt_t arp_init_pkt = {
+    .hw_type16 = swap16(ARP_HW_ETHER),
+    .pro_type16 = swap16(NET_PROTOCOL_IP),
+    .hw_len = NET_MAC_LEN,
+    .pro_len = NET_IP_LEN,
+    .sender_ip = NET_IF_IP,
+    .sender_mac = NET_IF_MAC,
+    .target_mac = {0}};
+    */
+    if(apt->hw_len != arp_init_pkt.hw_len) return 0;
+    if(apt->pro_len != arp_init_pkt.pro_len) return 0;
+    if(swap16(apt->hw_type16) != ARP_HW_ETHER) return 0;
+    if(swap16(apt->opcode16)!=ARP_HW_ETHER && swap16(apt->opcode16)!=ARP_REQUEST && swap16(apt->opcode16)!=ARP_REPLY) return 0;
+    if(swap16(apt->pro_type16)!=NET_PROTOCOL_IP) return 0;
     return 1;
 }
 
@@ -119,14 +138,15 @@ void arp_in(buf_t *buf, uint8_t *src_mac)
     if(buf->len < sizeof(arp_pkt_t)) return;
 
     arp_pkt_t *apt = (arp_pkt_t *)buf->data;
-    //check(apt);
+    if(!is_valid(apt)) return;
+
     map_set(&arp_table, apt->sender_ip, apt->sender_mac);
     buf_t *buffer = map_get(&arp_buf, apt->sender_ip);
     if(buffer != NULL) {
         ethernet_out(buffer, apt->sender_mac, NET_PROTOCOL_IP);
         map_delete(&arp_buf, apt->sender_ip);
     } else {
-        if((swap16(apt->opcode16) == ARP_REQUEST) && ishostip(apt->target_ip)) {
+        if((swap16(apt->opcode16) == ARP_REQUEST) && is_hostip(apt->target_ip)) {
             arp_resp(apt->sender_ip, src_mac);
         }
     }
