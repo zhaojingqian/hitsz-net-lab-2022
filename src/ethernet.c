@@ -11,7 +11,15 @@
 void ethernet_in(buf_t *buf)
 {
     // TO-DO
+    // 判断数据长度
+    if(buf->len < sizeof(ether_hdr_t)) return;
     
+    ether_hdr_t *hdr = (ether_hdr_t *)buf->data;
+    buf_remove_header(buf, sizeof(ether_hdr_t));
+
+    uint8_t *src = hdr->src;
+    net_protocol_t protocol = swap16(hdr->protocol16);
+    net_in(buf, protocol, src);
 }
 /**
  * @brief 处理一个要发送的数据包
