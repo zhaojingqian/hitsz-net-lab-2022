@@ -1,7 +1,12 @@
-eth_in 0 0
-eth_out 1 0.0694925
+eth_in 3 0.0163887
+eth_out 1 0
 arp_test 0 0
 ip_test 0 0
 ip_frag_test 0 0
 icmp_test 0 0
 ---
+eth_out
+arp_test
+ip_test
+ip_frag_test
+icmp_test
