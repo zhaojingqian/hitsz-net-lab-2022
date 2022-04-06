@@ -13,7 +13,7 @@ void ethernet_in(buf_t *buf)
     // TO-DO
     // 判断数据长度
     if(buf->len < sizeof(ether_hdr_t)) return;
-    
+
     ether_hdr_t *hdr = (ether_hdr_t *)buf->data;
     buf_remove_header(buf, sizeof(ether_hdr_t));
 
@@ -57,7 +57,7 @@ void ethernet_out(buf_t *buf, const uint8_t *mac, net_protocol_t protocol)
  */
 void ethernet_init()
 {
-    // TO-DO
+    buf_init(&rxbuf, ETHERNET_MAX_TRANSPORT_UNIT + sizeof(ether_hdr_t));
 }
 
 /**

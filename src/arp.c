@@ -59,6 +59,21 @@ void arp_print()
 void arp_req(uint8_t *target_ip)
 {
     // TO-DO
+    buf_init(&txbuf, sizeof(arp_pkt_t));
+    
+    arp_pkt_t *apt = (arp_pkt_t *) txbuf.data;
+    memcpy(apt, &arp_init_pkt, sizeof(arp_pkt_t));
+
+    apt->opcode16 = swap16(ARP_REQUEST);
+
+    uint8_t broadcast_mac[NET_MAC_LEN];
+    for(int i=0; i<NET_MAC_LEN; i++) {
+        broadcast_mac[i] = 0xFF;
+    }
+    for(int i=0; i<NET_IP_LEN; i++) {
+        apt->target_ip[i] = target_ip[i];
+    }
+    ethernet_out(&txbuf, broadcast_mac, NET_PROTOCOL_ARP);
 }
 
 /**
@@ -70,6 +85,26 @@ void arp_req(uint8_t *target_ip)
 void arp_resp(uint8_t *target_ip, uint8_t *target_mac)
 {
     // TO-DO
+    buf_init(&txbuf, sizeof(arp_pkt_t));
+
+    arp_pkt_t *apt = (arp_pkt_t *) txbuf.data;
+    memcpy(apt, &arp_init_pkt, sizeof(arp_pkt_t));
+
+    apt->opcode16 = swap16(ARP_REPLY);
+    for(int i=0; i<NET_MAC_LEN; i++) {
+        apt->target_mac[i] = target_mac[i];
+    }
+    for(int i=0; i<NET_IP_LEN; i++) {
+        apt->target_ip[i] = target_ip[i];
+    }
+    ethernet_out(&txbuf, apt->target_mac, NET_PROTOCOL_ARP);
+}
+
+int ishostip(uint8_t *ip) {
+    for(int i=0; i<NET_IP_LEN; i++) {
+        if(ip[i] != net_if_ip[i]) return 0;
+    }
+    return 1;
 }
 
 /**
@@ -81,6 +116,21 @@ void arp_resp(uint8_t *target_ip, uint8_t *target_mac)
 void arp_in(buf_t *buf, uint8_t *src_mac)
 {
     // TO-DO
+    if(buf->len < sizeof(arp_pkt_t)) return;
+
+    arp_pkt_t *apt = (arp_pkt_t *)buf->data;
+    //check(apt);
+    map_set(&arp_table, apt->sender_ip, apt->sender_mac);
+    buf_t *buffer = map_get(&arp_buf, apt->sender_ip);
+    if(buffer != NULL) {
+        ethernet_out(buffer, apt->sender_mac, NET_PROTOCOL_IP);
+        map_delete(&arp_buf, apt->sender_ip);
+    } else {
+        if((swap16(apt->opcode16) == ARP_REQUEST) && ishostip(apt->target_ip)) {
+            arp_resp(apt->sender_ip, src_mac);
+        }
+    }
+    return;
 }
 
 /**
@@ -93,6 +143,17 @@ void arp_in(buf_t *buf, uint8_t *src_mac)
 void arp_out(buf_t *buf, uint8_t *ip)
 {
     // TO-DO
+    uint8_t *mac = map_get(&arp_table, ip);
+    if(mac != NULL) {
+        ethernet_out(buf, mac, NET_PROTOCOL_IP);
+    } else {
+        if(map_size(&arp_buf)) return; //长度只有1
+        else {
+            map_set(&arp_buf, ip, buf);
+            arp_req(ip);
+        }
+    }
+    return;
 }
 
 /**
