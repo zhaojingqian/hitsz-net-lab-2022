@@ -1,10 +1,10 @@
-Start testing: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+Start testing: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 ----------------------------------------------------------
 1/6 Testing: eth_in
 1/6 Test: eth_in
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/eth_in.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/eth_in"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"eth_in" start time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"eth_in" start time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest start
@@ -31,10 +31,10 @@ Sample input all processed, checking output
 [1;32m====> All log rounds are the same to the demo.
 [0m
 <end of output>
-Test time =   0.06 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"eth_in" end time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"eth_in" end time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 "eth_in" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -42,7 +42,7 @@ Test Passed.
 2/6 Test: eth_out
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/eth_out.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/eth_out"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"eth_out" start time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"eth_out" start time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest start
@@ -88,10 +88,10 @@ Sample input all processed, checking output
 [1;32m====> All packets are the same to the demo.
 [0m
 <end of output>
-Test time =   0.03 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"eth_out" end time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"eth_out" end time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 "eth_out" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -99,7 +99,7 @@ Test Passed.
 3/6 Test: arp_test
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/arp_test.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/arp_test"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"arp_test" start time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"arp_test" start time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest begin.
@@ -137,10 +137,10 @@ Sample input all processed, checking output
 [0m[1;33mFor this test, log is only a reference. Your implementation is OK if your pcap file is the same to the demo pcap file.
 [0m
 <end of output>
-Test time =   0.07 sec
+Test time =   0.03 sec
 ----------------------------------------------------------
 Test Passed.
-"arp_test" end time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"arp_test" end time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 "arp_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -148,14 +148,14 @@ Test Passed.
 4/6 Test: ip_test
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/ip_test.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/ip_test"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"ip_test" start time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"ip_test" start time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest begin.
 [0;34mFeeding input 01010203040506070809101112131415[0;34m
 Sample input all processed, checking output
 [0;34mChecking log file(compare with demo).
-[0;31mRound 1: differences found(Line 3 of the current round)
+[0;32mRound 1: no differences
 [0;32mRound 2: no differences
 [0;32mRound 3: no differences
 [0;32mRound 4: no differences
@@ -173,22 +173,22 @@ Sample input all processed, checking output
 [1;31m====> Some log rounds are different to the demo.
 [0m[0;34mChecking pcap output file(compare with demo).
 [0;32mPacket 1: no differences
-[0;31mPacket 2: differences found
-[0;31mMissing packet 3
-[0;31mMissing packet 4
-[0;31mMissing packet 5
-[0;31mMissing packet 6
-[0;31mMissing packet 7
-[0;31mMissing packet 8
-[0;31mMissing packet 9
-[1;31m====> Some packets are different to the demo.
+[0;32mPacket 2: no differences
+[0;32mPacket 3: no differences
+[0;32mPacket 4: no differences
+[0;32mPacket 5: no differences
+[0;32mPacket 6: no differences
+[0;32mPacket 7: no differences
+[0;32mPacket 8: no differences
+[0;32mPacket 9: no differences
+[1;32m====> All packets are the same to the demo.
 [0m[1;33mFor this test, log is only a reference. Your implementation is OK if your pcap file is the same to the demo pcap file.
 [0m
 <end of output>
-Test time =   0.07 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
-Test Failed.
-"ip_test" end time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+Test Passed.
+"ip_test" end time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 "ip_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -196,18 +196,18 @@ Test Failed.
 5/6 Test: ip_frag_test
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/ip_frag_test.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/ip_frag_test"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"ip_frag_test" start time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"ip_frag_test" start time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mFeeding input.
 [0;34mComparing logs.
-[0;31mLog file shorter than expected.
+[1;32mLog file check passed
 [0m
 <end of output>
-Test time =   0.05 sec
+Test time =   0.02 sec
 ----------------------------------------------------------
-Test Failed.
-"ip_frag_test" end time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+Test Passed.
+"ip_frag_test" end time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 "ip_frag_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -215,14 +215,14 @@ Test Failed.
 6/6 Test: icmp_test
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/icmp_test.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/icmp_test"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"icmp_test" start time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"icmp_test" start time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest begin.
 [0;34mFeeding input 01010203040506070809101112131415[0;34m
 Sample input all processed, checking output
 [0;34mChecking log file(compare with demo).
-[0;31mRound 1: differences found(Line 3 of the current round)
+[0;32mRound 1: no differences
 [0;32mRound 2: no differences
 [0;32mRound 3: no differences
 [0;32mRound 4: no differences
@@ -240,14 +240,14 @@ Sample input all processed, checking output
 [1;31m====> Some log rounds are different to the demo.
 [0m[0;34mChecking pcap output file(compare with demo).
 [0;32mPacket 1: no differences
-[0;31mPacket 2: differences found
-[0;31mMissing packet 3
-[0;31mMissing packet 4
-[0;31mMissing packet 5
-[0;31mMissing packet 6
-[0;31mMissing packet 7
-[0;31mMissing packet 8
-[0;31mMissing packet 9
+[0;32mPacket 2: no differences
+[0;32mPacket 3: no differences
+[0;32mPacket 4: no differences
+[0;32mPacket 5: no differences
+[0;31mPacket 6: differences found
+[0;32mPacket 7: no differences
+[0;31mPacket 8: differences found
+[0;31mPacket 9: differences found
 [0;31mMissing packet 10
 [0;31mMissing packet 11
 [0;31mMissing packet 12
@@ -256,11 +256,11 @@ Sample input all processed, checking output
 [0m[1;33mFor this test, log is only a reference. Your implementation is OK if your pcap file is the same to the demo pcap file.
 [0m
 <end of output>
-Test time =   0.08 sec
+Test time =   0.03 sec
 ----------------------------------------------------------
 Test Failed.
-"icmp_test" end time: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+"icmp_test" end time: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??
 "icmp_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Apr 22 16:19 ?D1¨²¡À¨º¡Á?¨º¡À??
+End testing: Apr 22 20:16 ?D1¨²¡À¨º¡Á?¨º¡À??

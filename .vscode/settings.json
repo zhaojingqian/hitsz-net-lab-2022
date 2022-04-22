@@ -1,6 +1,7 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
-        "arp.h": "c"
+        "arp.h": "c",
+        "ip.h": "c"
     }
 }
