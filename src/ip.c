@@ -6,7 +6,7 @@
 
 int is_ip_valid(ip_hdr_t *iht, size_t len) {
     if(iht->version != IP_VERSION_4) return 0;
-    if(swap16(iht->total_len16) < len) return 0;
+    if(swap16(iht->total_len16) > len) return 0;
     return 1;
 }
 
@@ -31,16 +31,21 @@ void ip_in(buf_t *buf, uint8_t *src_mac)
     if(!is_ip_valid(iht, buf->len)) return;
     uint16_t pre_checksum16 = iht->hdr_checksum16;
     iht->hdr_checksum16 = 0;
-    uint16_t cur_checksum16 = checksum16((uint16_t *)buf, sizeof(ip_hdr_t));
+    uint16_t cur_checksum16 = checksum16((uint16_t *)iht, sizeof(ip_hdr_t));
     if(cur_checksum16 != pre_checksum16) return;
     iht->hdr_checksum16 = pre_checksum16;
 
     if(!is_ip_hostip(iht->dst_ip)) return;
     if(buf->len > iht->total_len16) {
-        buf_remove_padding(buf, iht->total_len16);
+        buf_remove_padding(buf, buf->len - iht->total_len16);
     }
     buf_remove_header(buf, sizeof(ip_hdr_t));
-    net_in(buf, iht->protocol, src_mac);
+    if(net_in(buf, iht->protocol, iht->src_ip) == -1) {
+        buf_add_header(buf, sizeof(ip_hdr_t));
+        ip_hdr_t *cur_iht = (ip_hdr_t *)buf->data;
+        memcpy(cur_iht, iht, sizeof(ip_hdr_t));
+        icmp_unreachable(buf, iht->src_ip, ICMP_CODE_PROTOCOL_UNREACH);
+    }
     return;
 }
 
