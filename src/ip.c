@@ -4,6 +4,19 @@
 #include "arp.h"
 #include "icmp.h"
 
+int is_ip_valid(ip_hdr_t *iht, size_t len) {
+    if(iht->version != IP_VERSION_4) return 0;
+    if(swap16(iht->total_len16) < len) return 0;
+    return 1;
+}
+
+int is_ip_hostip(uint8_t *ip) {
+    for(int i=0; i<NET_IP_LEN; i++) {
+        if(ip[i] != net_if_ip[i]) return 0;
+    }
+    return 1;
+}
+
 /**
  * @brief 处理一个收到的数据包
  * 
@@ -15,15 +28,14 @@ void ip_in(buf_t *buf, uint8_t *src_mac)
     // TO-DO
     if(buf->len < sizeof(ip_hdr_t)) return;
     ip_hdr_t *iht = (ip_hdr_t *)buf->data;
-    //if(!is_valid(iht)) return;
+    if(!is_ip_valid(iht, buf->len)) return;
     uint16_t pre_checksum16 = iht->hdr_checksum16;
     iht->hdr_checksum16 = 0;
     uint16_t cur_checksum16 = checksum16((uint16_t *)buf, sizeof(ip_hdr_t));
     if(cur_checksum16 != pre_checksum16) return;
     iht->hdr_checksum16 = pre_checksum16;
 
-    // if(!is_hostip(iht)) return;
-    // uint16_t total_len = iht->total_len16;
+    if(!is_ip_hostip(iht->dst_ip)) return;
     if(buf->len > iht->total_len16) {
         buf_remove_padding(buf, iht->total_len16);
     }
