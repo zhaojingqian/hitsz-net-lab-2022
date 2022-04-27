@@ -36,8 +36,8 @@ void ip_in(buf_t *buf, uint8_t *src_mac)
     iht->hdr_checksum16 = pre_checksum16;
 
     if(!is_ip_hostip(iht->dst_ip)) return;
-    if(buf->len > iht->total_len16) {
-        buf_remove_padding(buf, buf->len - iht->total_len16);
+    if(buf->len > swap16(iht->total_len16)) {
+        buf_remove_padding(buf, buf->len - swap16(iht->total_len16));
     }
     buf_remove_header(buf, sizeof(ip_hdr_t));
     if(net_in(buf, iht->protocol, iht->src_ip) == -1) {
@@ -103,7 +103,6 @@ void ip_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol)
         buf_t ip_buf;
         
         for(size_t i=0; i<n-1; i++) {
-            // memcpy(tmp_buf, buf, data_len);
             buf_init(&ip_buf, data_len);
             memcpy(ip_buf.data, buf->data + i*data_len, data_len);
             ip_fragment_out(&ip_buf, ip, protocol, id, i*offset_unit, 1);

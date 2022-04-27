@@ -1,10 +1,10 @@
-Start testing: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+Start testing: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 ----------------------------------------------------------
 1/6 Testing: eth_in
 1/6 Test: eth_in
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/eth_in.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/eth_in"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"eth_in" start time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"eth_in" start time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest start
@@ -34,7 +34,7 @@ Sample input all processed, checking output
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"eth_in" end time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"eth_in" end time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 "eth_in" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -42,7 +42,7 @@ Test Passed.
 2/6 Test: eth_out
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/eth_out.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/eth_out"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"eth_out" start time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"eth_out" start time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest start
@@ -91,7 +91,7 @@ Sample input all processed, checking output
 Test time =   0.03 sec
 ----------------------------------------------------------
 Test Passed.
-"eth_out" end time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"eth_out" end time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 "eth_out" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -99,7 +99,7 @@ Test Passed.
 3/6 Test: arp_test
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/arp_test.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/arp_test"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"arp_test" start time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"arp_test" start time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest begin.
@@ -137,10 +137,10 @@ Sample input all processed, checking output
 [0m[1;33mFor this test, log is only a reference. Your implementation is OK if your pcap file is the same to the demo pcap file.
 [0m
 <end of output>
-Test time =   0.03 sec
+Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"arp_test" end time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"arp_test" end time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 "arp_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -148,7 +148,7 @@ Test Passed.
 4/6 Test: ip_test
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/ip_test.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/ip_test"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"ip_test" start time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"ip_test" start time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest begin.
@@ -166,11 +166,11 @@ Sample input all processed, checking output
 [0;32mRound 9: no differences
 [0;32mRound 10: no differences
 [0;32mRound 11: no differences
-[0;31mRound 12: differences found(Line 3 of the current round)
+[0;32mRound 12: no differences
 [0;32mRound 13: no differences
 [0;32mRound 14: no differences
-[0;31mRound 15: differences found(Line 1 of the current round)
-[1;31m====> Some log rounds are different to the demo.
+[0;32mRound 15: no differences
+[1;32m====> All log rounds are the same to the demo.
 [0m[0;34mChecking pcap output file(compare with demo).
 [0;32mPacket 1: no differences
 [0;32mPacket 2: no differences
@@ -185,10 +185,10 @@ Sample input all processed, checking output
 [0m[1;33mFor this test, log is only a reference. Your implementation is OK if your pcap file is the same to the demo pcap file.
 [0m
 <end of output>
-Test time =   0.03 sec
+Test time =   0.06 sec
 ----------------------------------------------------------
 Test Passed.
-"ip_test" end time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"ip_test" end time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 "ip_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -196,7 +196,7 @@ Test Passed.
 5/6 Test: ip_frag_test
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/ip_frag_test.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/ip_frag_test"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"ip_frag_test" start time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"ip_frag_test" start time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mFeeding input.
@@ -204,10 +204,10 @@ Output:
 [1;32mLog file check passed
 [0m
 <end of output>
-Test time =   0.02 sec
+Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"ip_frag_test" end time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"ip_frag_test" end time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 "ip_frag_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -215,7 +215,7 @@ Test Passed.
 6/6 Test: icmp_test
 Command: "C:/Users/zzzgry/Desktop/net-lab-2022/build/icmp_test.exe" "C:/Users/zzzgry/Desktop/net-lab-2022/testing/data/icmp_test"
 Directory: C:/Users/zzzgry/Desktop/net-lab-2022/build
-"icmp_test" start time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"icmp_test" start time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 Output:
 ----------------------------------------------------------
 [0;34mTest begin.
@@ -259,8 +259,8 @@ Sample input all processed, checking output
 Test time =   0.06 sec
 ----------------------------------------------------------
 Test Passed.
-"icmp_test" end time: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+"icmp_test" end time: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
 "icmp_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Apr 23 15:42 ?D1¨²¡À¨º¡Á?¨º¡À??
+End testing: Apr 27 13:10 ?D1¨²¡À¨º¡Á?¨º¡À??
